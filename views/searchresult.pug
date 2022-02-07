@@ -1,0 +1,16 @@
+doctype html
+html(lang='en')
+	head
+		title Search Result
+		style
+			include styleSheet.css
+	body
+		include head.pug
+		h3 Search results:
+		div.results
+			if hasMovie.length
+				each val, index in movieList
+					a(href='/viewmovie?movieId=' + val._movieId) #{val.Title} 
+					br
+			else
+				p No results found. Please try again.

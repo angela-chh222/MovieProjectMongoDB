@@ -1,0 +1,30 @@
+doctype html
+html(lang='en')
+	head
+		title Contribute
+		style
+			include styleSheet.css
+	body
+		include head.pug
+		div.addactor
+			h4 Add an Actor:
+			form(action="/addActor" method="GET")
+				input(type="text" name="addactor" placeholder=" Actor Name")
+				br
+				button(type="submit" name="addactor") Add Actor
+		div.addmovie
+			h4 Add a Movie:
+			form(action="/addMovie" method="GET")
+				input(type="text" name="title" placeholder=" Title")
+				br
+				input(type="text" name="runtime" placeholder=" Runtime")
+				br
+				input(type="text" name="releaseyear" placeholder=" Release Year")
+				br
+				input(type="text" name="directors" placeholder=" Directors")
+				br
+				input(type="text" name="writers" placeholder=" Writers")
+				br
+				input(type="text" name="actors" placeholder=" Actors")
+				br
+				button(type="submit") Add Movie

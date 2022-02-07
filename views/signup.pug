@@ -1,0 +1,18 @@
+doctype html
+html(lang='en')
+	head
+		title Sign Up
+		style
+			include styleSheet.css
+	body
+		include head.pug
+		h3 #{prompt}
+		h4 Enter a username and password:
+		form(action="/signupconfirm" method="POST")
+			div 
+				input(type="text" name="username" placeholder="Username")
+			div
+				input(type="password" name="password" placeholder="Password")
+			div
+				input(type="hidden" name="acctType" value="regular")
+			button(type="submit" name="newAccount") Create Account

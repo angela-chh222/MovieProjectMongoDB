@@ -1,0 +1,40 @@
+doctype html
+html(lang='en')
+	head
+		title #{personName}
+		style
+			include styleSheet.css
+	body
+		include head.pug
+		h3 Name: #{personName}
+		div.follow
+			form(action="/followP" method="GET")
+				button(type="submit" name="edit") Unfollow
+		div.collab
+			h4 Frequent Collaborators:
+			p
+				a(href='/viewperson') Kirsten Dunst
+			p
+				a(href='/viewperson') Elle Fanning
+			p
+				a(href='/viewperson') Francis Coppola
+			p
+				a(href='/viewperson') Bill Murray
+			p
+				a(href='/viewperson') Rashida Jones
+		h4 Work History:
+		div.director
+			h4 Director:
+			each director, index in directors
+				a(href='/viewmovie?movieId=' + director._movieId) #{director.Title}
+				br
+		div.writer
+			h4 Writer:
+			each writer, index in writers
+				a(href='/viewmovie?movieId=' + writer._movieId) #{writer.Title}
+				br
+		div.actor
+			h4 Actor:
+			each actor, index in actors
+				a(href='viewmovie?movieId=' + actor._movieId) #{actor.Title}
+				br

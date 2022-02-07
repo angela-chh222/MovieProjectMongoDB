@@ -1,0 +1,46 @@
+doctype html
+html(lang='en')
+	head
+		title User Example
+		style
+			include styleSheet.css
+	body
+		include head.pug
+		h3 User: User2
+		div.follow
+			form(action="/followU" method="GET")
+				button(type="submit" name="edit") Unfollow
+				div.followingP
+			h4 People this user is following:
+			table(style='width:600px', border='1')
+				tr
+					td
+						a(href='/viewperson') Michael B. Jordan
+				tr
+					td
+						a(href='/viewperson') Martin Freeman
+				tr
+					td
+						a(href='/viewperson') Eddie Huang
+		div.movieList
+			h4 Movies this user has watched:
+			table(style='width:600px', border='1')
+				tr
+					td
+						a(href='/viewmovie') Moonlight
+				tr
+					td
+						a(href='/viewmovie') Princess Mononoke
+				tr
+					td
+						a(href='/viewmovie') The Little Mermaid
+		div.reviews
+			h4 Reviews written by this user:
+			table(style='width:600px', border='1')
+				tr
+					td
+						a(href='/viewmovie') Shrek
+
+				tr
+					td
+						a(href='/viewmovie') The Little Mermaid

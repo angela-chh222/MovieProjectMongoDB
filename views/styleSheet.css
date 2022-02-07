@@ -1,0 +1,62 @@
+body {
+	background-color: #f5cec7;
+	font-family: helvetica;
+	color: #9e504f;
+}
+
+h1{
+	font-family: garamond;
+	color: #b55c8a;
+}
+
+h2{
+	font-family: garamond;
+	color: #b55c8a;
+}
+
+table {
+	font-family: helvetica;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	color: #9e504f;
+	border: 1px solid #ddd;
+	padding: 8px;
+	background-color: #ffb284;
+}
+
+td, th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+th {
+	background-color: #ffc98b;
+}
+
+tr:nth-child(even){
+	background-color: #c6c09c;
+}
+
+button {
+	border: none;
+	color: #f5cec7;
+	background-color: #9e504f;
+	cursor: pointer;
+	padding: 5px 10px;
+}
+
+#displayNewReview {
+	font-family: "helvetica";
+    height:100px;
+	width: 360px;
+	wrap="hard"
+}
+
+#displayMovieSummary {
+	font-family: "helvetica";
+    height:50px;
+	width: 360px;
+	wrap="hard"
+}
+}

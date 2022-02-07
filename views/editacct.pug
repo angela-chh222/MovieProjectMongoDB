@@ -1,0 +1,17 @@
+doctype html
+html(lang='en')
+	head
+		title Manage your account
+		style
+			include styleSheet.css
+	body
+		include head.pug
+		h3 Manage your account:
+		h4 Username: #{user.username}
+		h4 Account type: #{user.acctType}
+		form(action="/updateuser" method="POST")
+			select(id="acctType" name="acctType")
+				option(value="regular") Regular
+				option(value="contributing") Contributing
+			button(type="submit" name="edit") Change user type
+		div.editType

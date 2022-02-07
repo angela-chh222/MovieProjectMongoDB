@@ -1,0 +1,95 @@
+doctype html
+html(lang='en')
+	head
+		title Login Dashboard
+		style
+			include styleSheet.css
+	body
+		h3 Hello #{user.username}, welcome to your user dashboard!
+		h4 Account type: #{user.acctType}
+		table(style='width:600px', border='1')
+			tr
+				th
+					div.logout
+						form(action="/logout" method="GET")
+							button(type="submit" name="logout") Click here to logout
+				th
+					div.editAcct
+						form(action="/editacct" method="GET")
+							button(type="submit" name="editacct") Manage your account
+				th
+					div.searchMovie
+						form(action="/searchmovie" method="GET")
+							button(type="submit" name="searchmovie") Search for a movie
+				if user.acctType === "contributing"
+					th
+						div.contribute
+							form(action="/contribute" method="GET")
+								button(type="submit" name="contribute") Contribute
+
+		div.notifications
+			h4 Notifications
+			table(style='width:600px', border='1')
+				tr
+					td
+						form(action="/viewNotif" method="GET")
+							button(type="submit" name="viewNotif") View
+							|
+							|
+							form(action="/delNotif" method="GET")
+								button(type="submit" name="delNotif") Delete
+					td User2 has added a new review
+		div.followingP
+			h4 People you are following:
+			table(style='width:600px', border='1')
+				each val, index in user.followingP
+					tr
+						td
+							form(action="/managefollowingP" method="GET")
+								button(type="submit" name="name" value=val.peopleName) Unfollow
+								|
+								|
+								a(href='/viewperson?name=' + val.peopleName) #{val.peopleName}
+
+		div.followingU
+			h4 Users you are following:
+			table(style='width:600px', border='1')
+				each val, index in user.followingU
+					tr
+						td
+							form(action="/managefollowingU" method="GET")
+								button(type="submit" name="person" value=val.userName) Unfollow
+								|
+								|
+								a(href='/viewuser?username=' + val.userName) #{val.userName}
+
+		div.movieList
+			h4 Watched movies:
+			table(style='width:600px', border='1')
+				each movie, index in user.watchedMovieList
+					tr
+						td 
+							form(action="/managemovielist" method="GET")
+								button(type="submit" name="movieId" value=movie.movieId) Remove
+								|
+								|
+								a(href='/viewmovie?movieId=' + movie.movieId) #{movie.movieTitle}
+		div.recommendations
+			h4 Here are your movie recommendations:
+			table(style='width:600px', border='1')
+				tr
+					td
+						a(href='/viewmovie') Harry Potter and the Prisoner of Azkaban
+				tr
+					td 
+						a(href='/viewmovie') Avengers: Endgame
+				tr
+					td
+						a(href='/viewmovie') Black Swan
+		div.reviewList
+			h4 Reviews:
+			each review, index in user.reviews
+				table(style='width:600px', border='1')
+					tr
+						td
+							a(href='/viewmovie?movieId=' + review.movieId) #{review.movieTitle}

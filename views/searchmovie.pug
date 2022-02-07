@@ -1,0 +1,18 @@
+doctype html
+html(lang='en')
+	head
+		title Search
+		style
+			include styleSheet.css
+	body
+		include head.pug
+		h3 Search for a movie:
+		div.search
+			form(action="/searchresult" method="POST")
+				input(type="text" name="Title" placeholder=" Find by title...")
+				br
+				input(type="text" name="Genre" placeholder=" Find by genre...")
+				br
+				input(type="text" name="Actor" placeholder=" Find by actor...")
+				br
+				button(type="submit" name="search") Search		

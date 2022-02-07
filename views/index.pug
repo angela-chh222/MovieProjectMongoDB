@@ -1,0 +1,20 @@
+doctype html
+html(lang='en')
+	head
+		title Login Page
+		style
+			include styleSheet.css
+	body
+		h3 #{prompt}
+		h4 Please login:
+		form(action="/login" method="POST")
+			div
+				input(type="text" name="username" placeholder="Username")
+			div
+				input(type="password" name="password" placeholder="Password")
+			div
+				button(type="submit" name="enterLogin") Login
+	
+		h4 If you do not have an account, please sign up.
+		form(action="/signup" method="GET")
+			button(type="submit" name="signUp") Sign Up

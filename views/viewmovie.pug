@@ -1,0 +1,75 @@
+doctype html
+html(lang='en')
+	head
+		title #{movie.Title} (#{movie.Year})
+		style
+			include styleSheet.css
+	body
+		include head.pug
+		h3 #{movie.Title} (#{movie.Year})
+		div.addMovie
+			form(action="/addMovietoWatchlist" method="GET")
+				input(type="hidden" name="title" value=movie.Title)
+				button(type="submit" name="movieId" value=movie._movieId) Add to watched list
+		p Runtime: #{movie.Runtime}
+		p Average rating: #{movie.aveScore}/10
+		p Plot: #{movie.Plot}
+		p Genre: #{movie.Genre}
+		div.director
+			h4 Director:
+			each director, index in movie.Director
+					a(href='/viewperson?name=' + director) #{director} 
+					br
+		div.writer
+			h4 Writers:
+			each writer, index in movie.Writer
+					a(href='/viewperson?name=' + writer) #{writer} 
+					br
+		div.actor
+			h4 Actors:
+			each actor, index in movie.Actors
+					a(href='/viewperson?name=' + actor) #{actor} 
+					br
+		div.reviews
+			h4 Reviews:
+				each review, index in movie.reviewList
+					p #{review.username}: #{review.score}/10 #{review.summary} #{review.reviewText}
+		div.addreview
+			h4 Add a review:
+			form(action="/addbasicreview" method="POST")
+				label(for='score') Pick a rating:
+				select#ratings(name='score')
+					option(value='0') --
+					option(value='1') 1/10
+					option(value='2') 2/10
+					option(value='3') 3/10
+					option(value='4') 4/10
+					option(value='5') 5/10
+					option(value='6') 6/10
+					option(value='7') 7/10
+					option(value='8') 8/10
+					option(value='9') 9/10
+					option(value='10') 10/10
+				br
+				button(type="submit" name="movieId" value=movie._movieId) Add a basic review
+			br
+			form(action="/addfullreview" method="POST")
+				label(for='score') Pick a rating:
+				select#ratings(name='score')
+					option(value='0') --
+					option(value='1') 1/10
+					option(value='2') 2/10
+					option(value='3') 3/10
+					option(value='4') 4/10
+					option(value='5') 5/10
+					option(value='6') 6/10
+					option(value='7') 7/10
+					option(value='8') 8/10
+					option(value='9') 9/10
+					option(value='10') 10/10
+				br
+				textarea#displayMovieSummary(name='summary', placeholder='Write a brief summary...')
+				br
+				textarea#displayNewReview(name='reviewText', placeholder='Write a review...')
+				br
+				button(type="submit" name="movieId" value=movie._movieId) Add a full review
